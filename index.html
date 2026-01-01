@@ -274,6 +274,9 @@ body {
     }
   </style>
 </head>
+  <audio id="bgMusic" loop>
+  <source src="lagu-kamu.mp3" type="audio/mpeg">
+</audio>
 <body>
   <!-- Page 1: Welcome Page with My Melody -->
   <div id="page1" class="page">
@@ -283,7 +286,7 @@ body {
       <img src="spidey.png" alt="My Melody" class="melody-character">
       <h1>Happy 26th Birthday!</h1>
       <div class="hearts" id="hearts1"></div>
-      <button class="btn" onclick="showPage('page2')">Continue</button>
+      <button class="btn" onclick="startMusicAndGo()">Continue</button>
     </div>
   </div>
 
@@ -445,6 +448,18 @@ and thank you for letting me love you the way i do.    </p></div>
         setTimeout(addConfetti, 100);
       });
     };
+
+    function startMusicAndGo() {
+  const music = document.getElementById('bgMusic');
+
+  music.volume = 0.6; // biar lembut
+  music.play().catch(err => {
+    console.log("Autoplay diblokir:", err);
+  });
+
+  showPage('page2');
+}
+
   </script>
 </body>
 
